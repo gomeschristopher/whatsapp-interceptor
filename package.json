@@ -4,7 +4,8 @@
   "description": "WhatsApp Interceptor",
   "main": "index.js",
   "scripts": {
-    "start": "env-cmd ./dev.env nodemon --ignore session.json index.js"
+    "start": "node index.js",
+    "dev": "env-cmd ./dev.env nodemon --ignore session.json index.js"
   },
   "author": "Christopher Gomes",
   "license": "ISC",
