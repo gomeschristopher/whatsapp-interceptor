@@ -32,7 +32,7 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   try {
-    await axios.post("http://127.0.0.1:8000/api/conversations/from", {
+    await axios.post("https://api.i5sistemas.com.br/api/conversations/from", {
       username: msg.from,
       message: msg.body,
     });
@@ -56,4 +56,4 @@ app.post("/send", (req, res) => {
   res.send({ status: "Enviado mensagem!" });
 });
 
-app.listen(3000, () => console.log(`Server is ready`));
+app.listen(process.env.PORT || 3000, () => console.log(`Server is ready in on port ${process.env.PORT}`));
