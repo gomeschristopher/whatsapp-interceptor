@@ -4,6 +4,7 @@ const SESSION_FILE_PATH = "./session.json";
 let sessionData;
 const express = require("express");
 const axios = require("axios");
+const qrcode = require('qrcode-terminal');
 
 if (fs.existsSync(SESSION_FILE_PATH)) {
   sessionData = require(SESSION_FILE_PATH);
@@ -32,7 +33,7 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   try {
-    await axios.post("https://api.i5sistemas.com.br/api/conversations/from", {
+    await axios.post(process.env.API_URL + "/conversations/from", {
       username: msg.from,
       message: msg.body,
     });
