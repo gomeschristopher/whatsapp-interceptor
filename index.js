@@ -58,7 +58,7 @@ client.on("message", async (msg) => {
     }
     await axios.post(
       (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
-        "/conversations/from",
+        "/conversations/from-client",
       formData,
       {
         headers: formData.getHeaders(),
