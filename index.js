@@ -7,7 +7,7 @@ const axios = require("axios");
 const qrcode = require("qrcode-terminal");
 const FormData = require("form-data");
 const multer = require('multer');
-const { isNull } = require("util");
+
 const upload = multer({ storage: multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'storage/')
@@ -58,7 +58,7 @@ client.on("message", async (msg) => {
     }
     await axios.post(
       (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
-        "/messages",
+        "/messages?method=put",
       formData,
       {
         headers: formData.getHeaders(),
