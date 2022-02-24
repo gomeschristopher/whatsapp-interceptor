@@ -7,6 +7,7 @@ const axios = require("axios");
 const qrcode = require("qrcode-terminal");
 const FormData = require("form-data");
 const multer = require("multer");
+const https = require("https");
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -45,29 +46,34 @@ client.on("ready", () => {
 });
 
 client.on("message", async (msg) => {
-  const contact = await msg.getContact();
   try {
-    const url =
-      (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
-      "/messages";
+    const contact = await msg.getContact();
+    let form = new FormData();
+    form.append("username", msg.from);
+    form.append("pushname", contact.pushname);
+    form.append("body", msg.body);
     if (msg.hasMedia) {
       const media = await msg.downloadMedia();
       const buff = Buffer.from(media.data, "base64");
       fs.writeFileSync("storage/" + media.filename, buff);
-      const formData = new FormData();
-      formData.append("username", msg.from);
-      formData.append("body", msg.body);
-      formData.append("pushname", contact.pushname);
-      formData.append("file", fs.createReadStream("storage/" + media.filename));
-      formData.append("type", media.mimetype);
-      await axios.post(url, formData, formData.getHeaders);
-    } else {
-      await axios.post(url, {
-        username: msg.from,
-        body: msg.body,
-        pushname: contact.pushname,
-      });
+      form.append("file", fs.createReadStream("storage/" + media.filename));
+      form.append("fileType", media.mimetype);
     }
+
+    form.getLength((err, length) => {
+      if (err) return reject(err);
+      axios.post(
+        (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
+          `/messages`,
+        form,
+        {
+          headers: {
+            ...form.getHeaders(),
+            "Content-Length": length,
+          },
+        }
+      );
+    });
   } catch (error) {
     console.error(error);
   }
