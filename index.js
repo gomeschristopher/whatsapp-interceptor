@@ -47,6 +47,7 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   try {
+    console.log(msg);
     const contact = await msg.getContact();
     let form = new FormData();
     form.append("username", msg.from);
