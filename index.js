@@ -47,34 +47,36 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   try {
-    console.log(msg);
-    const contact = await msg.getContact();
-    let form = new FormData();
-    form.append("username", msg.from);
-    form.append("pushname", contact.pushname ? contact.pushname : msg.from);
-    form.append("body", msg.body);
-    if (msg.hasMedia) {
-      const media = await msg.downloadMedia();
-      const buff = Buffer.from(media.data, "base64");
-      fs.writeFileSync("storage/" + media.filename, buff);
-      form.append("file", fs.createReadStream("storage/" + media.filename));
-      form.append("fileType", media.mimetype);
-    }
+    if (msg.from != "status@broadcast") {
+      console.log(msg);
+      const contact = await msg.getContact();
+      let form = new FormData();
+      form.append("username", msg.from);
+      form.append("pushname", contact.pushname ? contact.pushname : msg.from);
+      form.append("body", msg.body);
+      if (msg.hasMedia) {
+        const media = await msg.downloadMedia();
+        const buff = Buffer.from(media.data, "base64");
+        fs.writeFileSync("storage/" + media.filename, buff);
+        form.append("file", fs.createReadStream("storage/" + media.filename));
+        form.append("fileType", media.mimetype);
+      }
 
-    form.getLength((err, length) => {
-      if (err) return reject(err);
-      axios.post(
-        (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
-          `/messages`,
-        form,
-        {
-          headers: {
-            ...form.getHeaders(),
-            "Content-Length": length,
-          },
-        }
-      );
-    });
+      form.getLength((err, length) => {
+        if (err) return reject(err);
+        axios.post(
+          (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
+            `/messages`,
+          form,
+          {
+            headers: {
+              ...form.getHeaders(),
+              "Content-Length": length,
+            },
+          }
+        );
+      });
+    }
   } catch (error) {
     console.error(error);
   }
