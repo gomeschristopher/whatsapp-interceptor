@@ -52,7 +52,7 @@ client.on("message", async (msg) => {
       const contact = await msg.getContact();
       let form = new FormData();
       form.append("username", msg.from);
-      form.append("pushname", contact.pushname ? contact.pushname : msg.from);
+      form.append("pushname", contact.name ? contact.name : msg.from.replace("@c.us", ""));
       form.append("body", msg.body);
       if (msg.hasMedia) {
         const media = await msg.downloadMedia();
