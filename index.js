@@ -1,5 +1,5 @@
 const fs = require("fs");
-const { Client, MessageMedia } = require("whatsapp-web.js");
+const { Client, MessageMedia, LocalAuth } = require("whatsapp-web.js");
 const SESSION_FILE_PATH = "./session.json";
 let sessionData;
 const express = require("express");
@@ -25,9 +25,11 @@ if (fs.existsSync(SESSION_FILE_PATH)) {
 }
 
 const client = new Client({
-  session: sessionData,
+  //session: sessionData,
+  authStrategy: new LocalAuth()
 });
 
+/*
 client.on("authenticated", (session) => {
   sessionData = session;
   fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
@@ -36,6 +38,7 @@ client.on("authenticated", (session) => {
     }
   });
 });
+*/
 
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });

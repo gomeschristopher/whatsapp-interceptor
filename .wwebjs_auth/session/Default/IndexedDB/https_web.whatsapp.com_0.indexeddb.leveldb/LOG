@@ -1,0 +1,38 @@
+2022/03/14-09:06:42.929 4374 Reusing MANIFEST C:\Users\gomes\projects\whatsapp-interceptor\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/03/14-09:06:42.930 4374 Recovering log #98
+2022/03/14-09:06:43.251 4374 Reusing old log C:\Users\gomes\projects\whatsapp-interceptor\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000098.log 
+2022/03/14-09:06:56.590 41c Level-0 table #107: started
+2022/03/14-09:06:56.630 41c Level-0 table #107: 967742 bytes OK
+2022/03/14-09:06:56.632 41c Delete type=0 #98
+2022/03/14-09:06:56.644 41c Compacting 1@1 + 5@2 files
+2022/03/14-09:06:56.754 41c Generated table #108@1: 19155 keys, 2202505 bytes
+2022/03/14-09:06:56.799 41c Generated table #109@1: 3582 keys, 2152010 bytes
+2022/03/14-09:06:56.830 41c Generated table #110@1: 4521 keys, 2155065 bytes
+2022/03/14-09:06:56.911 41c Generated table #111@1: 33989 keys, 2250466 bytes
+2022/03/14-09:06:57.043 41c Generated table #112@1: 69055 keys, 2151802 bytes
+2022/03/14-09:06:57.043 41c Compacted 1@1 + 5@2 files => 10911848 bytes
+2022/03/14-09:06:57.044 41c compacted to: files[ 0 0 5 0 0 0 0 ]
+2022/03/14-09:07:00.021 16d8 Level-0 table #114: started
+2022/03/14-09:07:00.047 16d8 Level-0 table #114: 1001199 bytes OK
+2022/03/14-09:07:00.048 16d8 Delete type=2 #100
+2022/03/14-09:07:00.048 16d8 Delete type=2 #101
+2022/03/14-09:07:00.048 16d8 Delete type=2 #102
+2022/03/14-09:07:00.048 16d8 Delete type=2 #103
+2022/03/14-09:07:00.048 16d8 Delete type=2 #104
+2022/03/14-09:07:00.048 16d8 Delete type=0 #106
+2022/03/14-09:07:00.048 16d8 Delete type=2 #107
+2022/03/14-09:07:00.061 4908 Compacting 1@1 + 5@2 files
+2022/03/14-09:07:00.130 4908 Generated table #115@1: 20072 keys, 2205021 bytes
+2022/03/14-09:07:00.160 4908 Generated table #116@1: 3598 keys, 2152135 bytes
+2022/03/14-09:07:00.199 4908 Generated table #117@1: 4484 keys, 2155888 bytes
+2022/03/14-09:07:00.280 4908 Generated table #118@1: 33561 keys, 2248880 bytes
+2022/03/14-09:07:00.375 4908 Generated table #119@1: 70586 keys, 2234087 bytes
+2022/03/14-09:07:00.385 4908 Generated table #120@1: 101 keys, 2631 bytes
+2022/03/14-09:07:00.385 4908 Compacted 1@1 + 5@2 files => 10998642 bytes
+2022/03/14-09:07:00.386 4908 compacted to: files[ 0 0 6 0 0 0 0 ]
+2022/03/14-09:07:00.387 4908 Delete type=2 #108
+2022/03/14-09:07:00.387 4908 Delete type=2 #109
+2022/03/14-09:07:00.387 4908 Delete type=2 #110
+2022/03/14-09:07:00.387 4908 Delete type=2 #111
+2022/03/14-09:07:00.387 4908 Delete type=2 #112
+2022/03/14-09:07:00.387 4908 Delete type=2 #114

@@ -2,3 +2,4 @@ node_modules
 config
 session.json
 storage
+.wwebjs_auth
