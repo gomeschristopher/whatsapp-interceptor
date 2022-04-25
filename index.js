@@ -7,7 +7,6 @@ const axios = require("axios");
 const qrcode = require("qrcode-terminal");
 const FormData = require("form-data");
 const multer = require("multer");
-const https = require("https");
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -25,20 +24,8 @@ if (fs.existsSync(SESSION_FILE_PATH)) {
 }
 
 const client = new Client({
-  //session: sessionData,
   authStrategy: new LocalAuth()
 });
-
-/*
-client.on("authenticated", (session) => {
-  sessionData = session;
-  fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
-    if (err) {
-      console.error(err);
-    }
-  });
-});
-*/
 
 client.on("qr", (qr) => {
   qrcode.generate(qr, { small: true });
@@ -68,7 +55,7 @@ client.on("message", async (msg) => {
       form.getLength((err, length) => {
         if (err) return reject(err);
         axios.post(
-          (process.env.API_URL || "https://api.i5sistemas.com.br/api") +
+          (process.env.API_URL) +
             `/messages`,
           form,
           {
