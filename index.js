@@ -55,7 +55,8 @@ client.on("message", async (msg) => {
       form.getLength((err, length) => {
         if (err) return reject(err);
         axios.post(
-          (process.env.API_URL) +
+          //(process.env.API_URL) +
+          'https://api.i5sistemas.com.br/api' + 
             `/messages`,
           form,
           {
