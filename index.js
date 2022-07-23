@@ -11,7 +11,7 @@ const multer = require("multer");
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "./storage/");
+      cb(null, "storage/");
     },
     filename: function (req, file, cb) {
       cb(null, file.originalname);
@@ -47,15 +47,15 @@ client.on("message", async (msg) => {
       if (msg.hasMedia) {
         const media = await msg.downloadMedia();
         const buff = await Buffer.from(media.data, "base64");
-        fs.writeFileSync("./storage/" + media.filename, buff);
-        form.append("file", fs.createReadStream("./storage/" + media.filename));
+        fs.writeFileSync("storage/" + media.filename, buff);
+        form.append("file", fs.createReadStream("storage/" + media.filename));
         form.append("fileType", media.mimetype);
       }
 
       form.getLength((err, length) => {
         if (err) return reject(err);
         axios.post(
-          //'http://127.0.0.1:8000/api' +
+          //(process.env.API_URL) +
           'https://api.i5sistemas.com.br/api' +
           `/messages`,
           form,
