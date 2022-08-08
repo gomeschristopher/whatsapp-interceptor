@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "env-cmd .env nodemon index.js",
-    "start": "env-cmd .env npm run index.js"
+    "start": "env-cmd .env node index.js"
   },
   "author": "Christopher Gomes",
   "license": "ISC",
