@@ -37,7 +37,7 @@ client.on("ready", () => {
 
 client.on("message", async (msg) => {
   try {
-    if (msg.from != "status@broadcast") {
+    if (process.env.PROCCESS_MESSAGE_FROM_CLIENT && msg.from != "status@broadcast") {
       console.log(msg);
       const contact = await msg.getContact();
       let form = new FormData();
@@ -55,7 +55,7 @@ client.on("message", async (msg) => {
       form.getLength((err, length) => {
         if (err) return reject(err);
         axios.post(
-          (process.env.API_URL) + `/messages`,
+          (process.env.API_URL),
           form,
           {
             headers: {
