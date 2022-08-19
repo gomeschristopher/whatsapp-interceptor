@@ -85,6 +85,7 @@ app.post("/message", upload.single("file"), (req, res) => {
   if (req.file) {
     message = MessageMedia.fromFilePath(`./storage/${req.file.filename}`);
   }
+  console.log(req.body);
   res.send(client.sendMessage(req.body.number, message));
 });
 
