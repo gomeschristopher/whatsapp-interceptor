@@ -1,11 +1,11 @@
 {
-  "name": "whatsapp-api",
+  "name": "whatsapp-interceptor",
   "version": "1.0.0",
   "description": "WhatsApp Interceptor",
   "main": "index.js",
   "scripts": {
-    "dev": "env-cmd .env nodemon index.js",
-    "start": "env-cmd .env node index.js"
+    "dev": "env-cmd .env nodemon src/index.js",
+    "start": "env-cmd .env node src/index.js"
   },
   "author": "Christopher Gomes",
   "license": "ISC",
@@ -15,7 +15,7 @@
     "form-data": "^4.0.0",
     "multer": "^1.4.4",
     "qrcode-terminal": "^0.12.0",
-    "whatsapp-web.js": "^1.17.1"
+    "whatsapp-web.js": "^1.18.2"
   },
   "devDependencies": {
     "env-cmd": "^8.0.2",
