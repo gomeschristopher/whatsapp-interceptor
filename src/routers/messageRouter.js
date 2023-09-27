@@ -16,13 +16,17 @@ const upload = multer({
   }),
 })
 
+router.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 router.post("/message", upload.single("file"), (req, res) => {
-  let message = req.body.message
-  if (req.file) {
-    message = MessageMedia.fromFilePath(`./storage/${req.file.filename}`)
-  }
-  whatsappclient.sendMessage(req.body.number, message)
-  res.send()
+  req.body.broadcastList.forEach(item => {
+    console.log(item.number, item.message);
+    whatsappclient.sendMessage(item.number, item.message)
+  });
+
+  res.send();
 })
 
 module.exports = router
