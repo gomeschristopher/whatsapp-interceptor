@@ -2,3 +2,5 @@ node_modules
 storage
 .wwebjs_auth
 .env
+.DS_Store
+.wwebjs_cache
