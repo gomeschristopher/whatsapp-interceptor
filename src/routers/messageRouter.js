@@ -21,11 +21,7 @@ router.get('/', (req, res) => {
 });
 
 router.post("/message", upload.single("file"), (req, res) => {
-  req.body.broadcastList.forEach(item => {
-    console.log(item.number, item.message);
-    whatsappclient.sendMessage(item.number, item.message)
-  });
-
+  whatsappclient.sendMessage(req.body.phoneNumber, req.body.message);
   res.send();
 })
 
