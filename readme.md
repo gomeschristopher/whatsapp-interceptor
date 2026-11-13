@@ -1,4 +1,4 @@
-# Node.js Rest API to receive and send message across WhatsApp
+# Node.js REST API to send and receive WhatsApp messages
 
 ## Installation
 
